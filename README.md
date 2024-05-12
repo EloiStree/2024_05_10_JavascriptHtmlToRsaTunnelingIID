@@ -14,3 +14,12 @@ Set Tamper Monkey Javascript while I code that:
 
 
 The aim here is to create Javascript interface usable on any device
+
+
+
+
+Test: 
+[https://eloistree.github.io/2024_05_10_JavascriptHtmlToRsaTunnelingIID/LocalWS/JavascriptToIIDWS.html](https://eloistree.github.io/2024_05_10_JavascriptHtmlToRsaTunnelingIID/LocalWS/JavascriptToIIDWS.html)
+
+Copy this in your [Tamper Monkey](https://www.tampermonkey.net) :
+[https://eloistree.github.io/2024_05_10_JavascriptHtmlToRsaTunnelingIID/LocalWS/TamperToIIDWS.js](https://eloistree.github.io/2024_05_10_JavascriptHtmlToRsaTunnelingIID/LocalWS/TamperToIIDWS.js)
