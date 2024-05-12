@@ -19,7 +19,7 @@
 
 
 console.log('Code Start ');
-var socket ;//= new WebSocket('ws://localhost:5012');
+var socket = new WebSocket('ws://localhost:7073');
 var isConnectionValide=false;
 
 
@@ -28,34 +28,45 @@ var isConnectionValide=false;
            return;
        }
        const randomInt = Math.floor(Math.random() * 1000000000) + 1;
-       PushMessageToServerInteger(randomInt)
+       PushMessageToServerIntegerNotDate(randomInt)
 
    }
-    function PushMessageToServerInteger(integer){
-       if(!isConnectionValide){return;}
+   function PushMessageToServerIntegerDate(integer){
+    if(!isConnectionValide){return;}
 
-       //socket.send("i|"+integer);
+    //socket.send("i|"+integer);
 
-         var value =integer;
-        // Get the current UTC time in milliseconds
-        const currentTimeMillis = Date.now();
+      var value =integer;
+     // Get the current UTC time in milliseconds
+     const currentTimeMillis = Date.now();
 
-        // Convert to an unsigned long (assuming 64-bit)
-        const ulongVar = BigInt(currentTimeMillis);
+     // Convert to an unsigned long (assuming 64-bit)
+     const ulongVar = BigInt(currentTimeMillis);
 
-        // Create a byte array of length 12
-        const byteArray = new Uint8Array(12);
-        // Set the first 4 bytes of the array from the value in little-endian format
-        byteArray[0] = value & 0xFF;
-        byteArray[1] = (value >> 8) & 0xFF;
-        byteArray[2] = (value >> 16) & 0xFF;
-        byteArray[3] = (value >> 24) & 0xFF;
+     // Create a byte array of length 12
+     const byteArray = new Uint8Array(12);
+     // Set the first 4 bytes of the array from the value in little-endian format
+     byteArray[0] = value & 0xFF;
+     byteArray[1] = (value >> 8) & 0xFF;
+     byteArray[2] = (value >> 16) & 0xFF;
+     byteArray[3] = (value >> 24) & 0xFF;
 
-        // Set the next 8 bytes of the array from ulongVar in little-endian format
-        const view = new DataView(byteArray.buffer);
-        view.setBigUint64(4, ulongVar, true);
-        socket.send(byteArray);
-   }
+     // Set the next 8 bytes of the array from ulongVar in little-endian format
+     const view = new DataView(byteArray.buffer);
+     view.setBigUint64(4, ulongVar, true);
+     socket.send(byteArray);
+}
+function PushMessageToServerIntegerNotDate(integer){
+    if(!isConnectionValide){return;}
+
+      var value =integer;
+     const byteArray = new Uint8Array(4);
+     byteArray[0] = value & 0xFF;
+     byteArray[1] = (value >> 8) & 0xFF;
+     byteArray[2] = (value >> 16) & 0xFF;
+     byteArray[3] = (value >> 24) & 0xFF;
+     socket.send(byteArray);
+}
 
 
 
@@ -68,7 +79,7 @@ function ReconnectIfOffline(){
     else{
         isConnectionValide=false
         try{
-            socket = new WebSocket('ws://localhost:5012');
+            socket = new WebSocket('ws://localhost:7073');
             // Event listener for when the connection is established
             socket.addEventListener('open', () => {
                 console.log('WebSocket connection established');

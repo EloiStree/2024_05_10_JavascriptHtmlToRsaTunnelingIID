@@ -44,7 +44,7 @@ gwQco1KRMDSmXSMkDwIDAQAB
 
 
                 console.log('Code Start ');
-var socket = new WebSocket('ws://localhost:3615');
+var socket = new WebSocket("ws://81.240.94.97:4501");
 var isConnectionValide=false;
 
 
@@ -147,7 +147,7 @@ socket.addEventListener('error', (error) => {
             }
         }
 
-    setInterval(PushMessageToServerRandomInteger, 3000);
+    setTimeout(PushMessageToServerRandomInteger, 2000);
     setTimeout(Test, 1000);
                 console.log('Code end reach');
 
