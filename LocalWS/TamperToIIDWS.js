@@ -3,7 +3,9 @@
 // @name         Integer Games Local WS
 // @namespace    http://tampermonkey.net/
 // @version      0.1
-// @description  try to take over the world!
+// @description  try to take over the world! 
+// @description  https://github.com/EloiStree/2024_05_10_JavascriptHtmlToRsaTunnelingIID/blob/main/Javascript2LocalWsByteInteger/TamperMonkey/TamperMonkeyToGateSampleWs.js
+
 // @author       You
 // @match        https://integergames.be
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=tampermonkey.net
